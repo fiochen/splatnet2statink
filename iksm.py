@@ -14,7 +14,12 @@ if getattr(sys, 'frozen', False):
 	app_path = os.path.dirname(sys.executable)
 elif __file__:
 	app_path = os.path.dirname(__file__)
-config_path = os.path.join(app_path, "config.txt")
+
+idPrefix = "configs/"
+if len(sys.argv) >= 3 and sys.argv[1] == '-I':
+	idPrefix = idPrefix + sys.argv[2]
+
+config_path = os.path.join(app_path, idPrefix + "config.txt")
 
 def log_in(ver):
 	'''Logs in to a Nintendo Account and returns a session_token.'''

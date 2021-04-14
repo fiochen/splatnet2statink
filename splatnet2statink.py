@@ -30,7 +30,12 @@ if getattr(sys, 'frozen', False):
 	app_path = os.path.dirname(sys.executable)
 elif __file__:
 	app_path = os.path.dirname(__file__)
-config_path = os.path.join(app_path, "config.txt")
+
+idPrefix = "configs/"
+if len(sys.argv) >= 3 and sys.argv[1] == '-I':
+	idPrefix = idPrefix + sys.argv[2]
+
+config_path = os.path.join(app_path, idPrefix + "config.txt")
 
 try:
 	config_file = open(config_path, "r")
@@ -274,6 +279,7 @@ def main():
 	parser.add_argument("--salmon", required=False, action="store_true",
 						help="uploads salmon run shifts")
 	parser.add_argument("-i", dest="filename", required=False, help=argparse.SUPPRESS)
+	parser.add_argument("-I", dest="ID", required=False, nargs="?", action="store", help="id", const=0)
 
 	parser_result = parser.parse_args()
 
@@ -283,11 +289,11 @@ def main():
 	filename = parser_result.filename
 	salmon = parser_result.salmon
 
-	salmon_and_not_r = True if salmon and len(sys.argv) == 3 and "-r" not in sys.argv else False
-	salmon_and_more = True if salmon and len(sys.argv) > 3 else False
-	if salmon_and_not_r or salmon_and_more:
-		print("Can only use --salmon flag alone or with -r. Exiting.")
-		sys.exit(1)
+# 	salmon_and_not_r = True if salmon and len(sys.argv) == 3 and "-r" not in sys.argv else False
+# 	salmon_and_more = True if salmon and len(sys.argv) > 3 else False
+# 	if salmon_and_not_r or salmon_and_more:
+# 		print("Can only use --salmon flag alone or with -r. Exiting.")
+# 		sys.exit(1)
 
 	if parser_result.N != None:
 		try:
