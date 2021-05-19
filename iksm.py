@@ -86,7 +86,7 @@ def get_session_token(session_token_code, auth_code_verifier):
 	'''Helper function for log_in().'''
 
 	app_head = {
-		'User-Agent':      'OnlineLounge/1.10.1 NASDKAPI Android',
+		'User-Agent':      'OnlineLounge/1.11.0 NASDKAPI Android',
 		'Accept-Language': 'en-US',
 		'Accept':          'application/json',
 		'Content-Type':    'application/x-www-form-urlencoded',
@@ -124,7 +124,7 @@ def get_cookie(session_token, userLang, ver):
 		'Content-Length':  '439',
 		'Accept':          'application/json',
 		'Connection':      'Keep-Alive',
-		'User-Agent':      'OnlineLounge/1.10.1 NASDKAPI Android'
+		'User-Agent':      'OnlineLounge/1.11.0 NASDKAPI Android'
 	}
 
 	body = {
@@ -141,7 +141,7 @@ def get_cookie(session_token, userLang, ver):
 	# get user info
 	try:
 		app_head = {
-			'User-Agent':      'OnlineLounge/1.10.1 NASDKAPI Android',
+			'User-Agent':      'OnlineLounge/1.11.0 NASDKAPI Android',
 			'Accept-Language': userLang,
 			'Accept':          'application/json',
 			'Authorization':   'Bearer {}'.format(id_response["access_token"]),
@@ -165,9 +165,9 @@ def get_cookie(session_token, userLang, ver):
 	app_head = {
 		'Host':             'api-lp1.znc.srv.nintendo.net',
 		'Accept-Language':  userLang,
-		'User-Agent':       'com.nintendo.znca/1.10.1 (Android/7.1.2)',
+		'User-Agent':       'com.nintendo.znca/1.11.0 (Android/7.1.2)',
 		'Accept':           'application/json',
-		'X-ProductVersion': '1.10.1',
+		'X-ProductVersion': '1.11.0',
 		'Content-Type':     'application/json; charset=utf-8',
 		'Connection':       'Keep-Alive',
 		'Authorization':    'Bearer',
@@ -217,9 +217,9 @@ def get_cookie(session_token, userLang, ver):
 	try:
 		app_head = {
 			'Host':             'api-lp1.znc.srv.nintendo.net',
-			'User-Agent':       'com.nintendo.znca/1.10.1 (Android/7.1.2)',
+			'User-Agent':       'com.nintendo.znca/1.11.0 (Android/7.1.2)',
 			'Accept':           'application/json',
-			'X-ProductVersion': '1.10.1',
+			'X-ProductVersion': '1.11.0',
 			'Content-Type':     'application/json; charset=utf-8',
 			'Connection':       'Keep-Alive',
 			'Authorization':    'Bearer {}'.format(splatoon_token["result"]["webApiServerCredential"]["accessToken"]),
